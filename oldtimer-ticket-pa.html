@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Old Timer Grand Prix Ticket — Verjaardagscadeau</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Oswald:wght@300;400;600&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1008;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .page-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 780px;
+    width: 100%;
+  }
+
+  .intro-card {
+    background: linear-gradient(135deg, #2a1a06 0%, #1a1008 100%);
+    border: 1px solid #8B6914;
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  .intro-card::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed rgba(139,105,20,0.3);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  .intro-card h2 {
+    font-family: 'Special Elite', serif;
+    color: #D4A843;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+  .intro-card p {
+    color: #c9a96b;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.7;
+    letter-spacing: 0.05em;
+  }
+  .intro-card .name-highlight {
+    color: #f0c96b;
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+
+  /* ── TICKET ── */
+  .ticket-outer {
+    width: 100%;
+    filter: drop-shadow(0 8px 40px rgba(0,0,0,0.7));
+    animation: rise 1.2s ease both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ticket {
+    background: #f5e8c8;
+    display: flex;
+    flex-direction: row;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    min-height: 340px;
+  }
+
+  /* left stripe */
+  .ticket-side {
+    width: 60px;
+    background: #B8191A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .ticket-side::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 8px,
+      rgba(0,0,0,0.12) 8px,
+      rgba(0,0,0,0.12) 10px
+    );
+  }
+  .ticket-side-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* perforation */
+  .perforation {
+    width: 2px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #b89a60 0px,
+      #b89a60 8px,
+      transparent 8px,
+      transparent 16px
+    );
+    flex-shrink: 0;
+  }
+
+  /* main body */
+  .ticket-body {
+    flex: 1;
+    padding: 2rem 2rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  /* watermark */
+  .ticket-body::before {
+    content: 'GP';
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 11rem;
+    font-weight: 900;
+    color: rgba(139,80,20,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .ticket-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-badge {
+    background: #B8191A;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+  }
+
+  .ticket-number {
+    font-family: 'Special Elite', serif;
+    font-size: 0.75rem;
+    color: #8B6020;
+    letter-spacing: 0.1em;
+  }
+
+  .event-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: #1a1008;
+    line-height: 1;
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.01em;
+  }
+  .event-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: #7a5c20;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(to right, #B8191A 0%, #D4A843 50%, #B8191A 100%);
+    margin-bottom: 1.25rem;
+    border-radius: 2px;
+  }
+
+  .ticket-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .meta-item {}
+  .meta-label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8B6020;
+    margin-bottom: 0.2rem;
+  }
+  .meta-value {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1a1008;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+  .meta-value.big {
+    font-size: 1.1rem;
+    color: #B8191A;
+  }
+
+  .ticket-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-top: 1px dashed #c9a96b;
+    padding-top: 1rem;
+    margin-top: auto;
+  }
+  .footer-note {
+    font-family: 'Special Elite', serif;
+    font-size: 0.75rem;
+    color: #9a7030;
+    line-height: 1.5;
+    max-width: 60%;
+  }
+  .footer-note strong {
+    color: #B8191A;
+  }
+
+  .barcode {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    height: 40px;
+  }
+  .barcode span {
+    display: block;
+    background: #1a1008;
+    border-radius: 1px;
+  }
+
+  /* stub */
+  .ticket-stub {
+    width: 130px;
+    background: #2a1a06;
+    border-left: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .ticket-stub::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px dashed rgba(212,168,67,0.25);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  .stub-label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #8B6020;
+    text-align: center;
+  }
+  .stub-admit {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: #D4A843;
+    line-height: 1;
+    text-align: center;
+  }
+  .stub-admit-small {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.6rem;
+    color: #8B6020;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .stub-weekend {
+    font-family: 'Special Elite', serif;
+    font-size: 0.7rem;
+    color: #c9a96b;
+    text-align: center;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+  }
+  .stub-serial {
+    font-family: 'Special Elite', serif;
+    font-size: 0.65rem;
+    color: #5a4010;
+    letter-spacing: 0.08em;
+    text-align: center;
+  }
+
+  /* checkboxes section */
+  .rsvp-section {
+    width: 100%;
+    background: linear-gradient(135deg, #2a1a06 0%, #1a1008 100%);
+    border: 1px solid #8B6914;
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    animation: rise 1.2s 0.3s ease both;
+  }
+  .rsvp-section::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed rgba(139,105,20,0.3);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  .rsvp-title {
+    font-family: 'Special Elite', serif;
+    color: #D4A843;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .rsvp-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .rsvp-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(212,168,67,0.06);
+    border: 1px solid rgba(212,168,67,0.2);
+    border-radius: 3px;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .rsvp-btn:hover {
+    background: rgba(212,168,67,0.12);
+    border-color: rgba(212,168,67,0.5);
+    transform: translateX(4px);
+  }
+  .rsvp-btn.yes:hover { border-color: rgba(40,180,80,0.6); background: rgba(40,180,80,0.08); }
+  .rsvp-btn.no:hover  { border-color: rgba(184,25,26,0.6); background: rgba(184,25,26,0.08); }
+
+  .btn-icon {
+    font-size: 1.5rem;
+    width: 2rem;
+    text-align: center;
+  }
+  .btn-text-wrap {}
+  .btn-main {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #f0c96b;
+    display: block;
+  }
+  .btn-sub {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: #9a7030;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-top: 0.1rem;
+  }
+
+  .response-box {
+    display: none;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 3px;
+    text-align: center;
+    font-family: 'Special Elite', serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+    animation: pop 0.4s ease both;
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .response-box.yes-resp {
+    background: rgba(40,180,80,0.1);
+    border: 1px solid rgba(40,180,80,0.3);
+    color: #7adc9a;
+  }
+  .response-box.no-resp {
+    background: rgba(184,25,26,0.1);
+    border: 1px solid rgba(184,25,26,0.3);
+    color: #e07070;
+  }
+
+  @media (max-width: 600px) {
+    .ticket { flex-direction: column; }
+    .ticket-side { width: 100%; height: 36px; flex-direction: row; }
+    .ticket-side-text { writing-mode: horizontal-tb; transform: none; }
+    .ticket-stub { width: 100%; flex-direction: row; padding: 1rem 1.5rem; }
+    .ticket-meta { grid-template-columns: 1fr 1fr; }
+    body { padding: 1rem; }
+    .intro-card, .rsvp-section { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- intro -->
+  <div class="intro-card">
+    <h2>🎂 Gefeliciteerd met je verjaardag!</h2>
+    <p>
+      Dit is een speciaal cadeau van je zoons.<br>
+      <span class="name-highlight">Hieronder vind je je ticket</span> — maar eerst willen we weten of je er zin in hebt!
+    </p>
+  </div>
+
+  <!-- ticket -->
+  <div class="ticket-outer">
+    <div class="ticket">
+
+      <!-- rode zijbalk -->
+      <div class="ticket-side">
+        <span class="ticket-side-text">Old Timer Grand Prix 2025</span>
+      </div>
+
+      <div class="perforation"></div>
+
+      <!-- hoofdticket -->
+      <div class="ticket-body">
+        <div class="ticket-header">
+          <span class="event-badge">Officieel Weekend Ticket</span>
+          <span class="ticket-number">№ OT-2025-0807</span>
+        </div>
+
+        <div class="event-name">Old Timer<br>Grand Prix</div>
+        <div class="event-subtitle">Historic Motor Racing</div>
+
+        <div class="divider"></div>
+
+        <div class="ticket-meta">
+          <div class="meta-item">
+            <div class="meta-label">Datum</div>
+            <div class="meta-value big">7 – 9 Aug</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Jaar</div>
+            <div class="meta-value">2025</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Toegang</div>
+            <div class="meta-value">Volledig<br>Weekend</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Sectie</div>
+            <div class="meta-value">Tribune A</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Klasse</div>
+            <div class="meta-value">Ere-gast</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Houder</div>
+            <div class="meta-value">Jarige Job</div>
+          </div>
+        </div>
+
+        <div class="ticket-footer">
+          <div class="footer-note">
+            Vrijdag 7 augustus t/m zondag 9 augustus<br>
+            <strong>Geldig voor 3 volledige racedagen</strong><br>
+            Classic cars · Motoren · Grand Prix sfeer
+          </div>
+          <div class="barcode" id="bc"></div>
+        </div>
+      </div>
+
+      <div class="perforation"></div>
+
+      <!-- stub -->
+      <div class="ticket-stub">
+        <div class="stub-label">Weekend Pass</div>
+        <div>
+          <div class="stub-admit">3</div>
+          <div class="stub-admit-small">Dagen</div>
+        </div>
+        <div class="stub-weekend">7 Aug<br>8 Aug<br>9 Aug</div>
+        <div class="stub-serial">OT · 2025</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RSVP -->
+  <div class="rsvp-section">
+    <div class="rsvp-title">Wat zeg je — ga je mee?</div>
+    <div class="rsvp-options">
+      <div class="rsvp-btn yes" onclick="respond('yes')">
+        <div class="btn-icon">🏁</div>
+        <div class="btn-text-wrap">
+          <span class="btn-main">Ja, ik ga mee!</span>
+          <span class="btn-sub">Klik hier als je er zin in hebt</span>
+        </div>
+      </div>
+      <div class="rsvp-btn no" onclick="respond('no')">
+        <div class="btn-icon">🔧</div>
+        <div class="btn-text-wrap">
+          <span class="btn-main">Nee, liever iets anders</span>
+          <span class="btn-sub">Klik hier en we bedenken samen wat anders</span>
+        </div>
+      </div>
+    </div>
+    <div id="response-yes" class="response-box yes-resp">
+      🏎️ Vol gas! Het ticket is van jou.<br>
+      We regelen alles — jij hoeft alleen maar te genieten.
+    </div>
+    <div id="response-no" class="response-box no-resp">
+      Geen probleem, pap! 😄<br>
+      We bedenken samen iets dat wél bij je past.<br>
+      Jij verdient het beste cadeau.
+    </div>
+  </div>
+
+</div>
+
+<script>
+// barcode genereren
+const bc = document.getElementById('bc');
+const pattern = [3,1,2,1,3,2,1,2,1,3,2,1,2,3,1,2,3,1,2,1,2,3,1,2,1];
+pattern.forEach(w => {
+  const bar = document.createElement('span');
+  const isThick = w >= 2;
+  bar.style.cssText = `width:${w}px;height:${isThick ? 40 : 30}px;`;
+  bc.appendChild(bar);
+  const gap = document.createElement('span');
+  gap.style.cssText = 'width:2px;height:1px;background:transparent;display:block;';
+  bc.appendChild(gap);
+});
+
+function respond(choice) {
+  document.getElementById('response-yes').style.display = 'none';
+  document.getElementById('response-no').style.display = 'none';
+  const el = document.getElementById('response-' + choice);
+  el.style.display = 'block';
+  document.querySelectorAll('.rsvp-btn').forEach(b => b.style.opacity = '0.5');
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+</script>
+</body>
+</html>
